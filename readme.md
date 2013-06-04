@@ -85,11 +85,12 @@ In any case, if you have any problem or questions, just drop me a line.
 
 ## Set up
 
+* Download the Android SDK Bundle, and use the eclipse tool that is included to install the SDK for API level 7.
 * Download the [Google Analytics mobile SDKs](http://code.google.com/apis/analytics/docs/mobile/download.html) for both iOS and Android platforms.
     * From the iOS SDK, copy the files _GANTracker.h_ and _libGoogleAnalytics.a_ from the _Library_ folder within the .tar.gz archive, to the _source/ios/Libraries_ folder in the project.
 	* From the Android SDK, copy the file _libGoogleAnalytics.jar_ from inside the .zip archive, to the _source/android/libs_ folder in the project.
-* Add the _FlashRuntimeExtensions.h_ file from the Adobe Air SDK to the _source/ios/Libraries_ folder in the project.
-* Add the _FlashRuntimeExtensions.jar_ file from the Adobe Air SDK to the _source/android/libs_ folder in the project.
+* Add the _FlashRuntimeExtensions.h_ file from the Adobe Air SDK (/include/) to the _source/ios/Libraries_ folder in the project.
+* Add the _FlashRuntimeExtensions.jar_ file from the Adobe Air SDK (/lib/android/) to the _source/android/libs_ folder in the project.
 * Substitute the file _certificate.p12_ in the _build_ folder with your own. This may be a self-signed certificate created by Adobe Air.
 * Edit the _build.config_ file in the _build_ folder and change the properties in this file to match your system.
 * Run the ant build script _build.ant_ from the _build_ folder. This creates the native extension, and the default swc file, inside the _bin_ folder.

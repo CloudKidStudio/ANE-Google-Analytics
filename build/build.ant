@@ -7,6 +7,7 @@
         </classpath>
     </taskdef>
 
+	<property file="${user.home}\Documents\ant\my.build.properties"/>
 	<property file="build/build.properties" />
 	
 	<target name="build" depends="ext_init,ext_and,ext_ios-device,ext_ios-simulator,
