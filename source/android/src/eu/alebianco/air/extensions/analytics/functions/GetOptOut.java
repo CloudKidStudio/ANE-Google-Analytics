@@ -22,11 +22,11 @@ import java.util.HashMap;
 
 public class GetOptOut implements FREFunction {
 
-    HashMap<String, Boolean> mutex = new HashMap<String, Boolean>();
+    private final HashMap<String, Boolean> mutex = new HashMap<String, Boolean>();
 
     @Override
     public FREObject call(FREContext context, FREObject[] args) {
-        FREObject result = null;
+        FREObject result;
 
         GoogleAnalytics.getInstance(context.getActivity()).requestAppOptOut(new GoogleAnalytics.AppOptOutCallback() {
             @Override
@@ -40,7 +40,7 @@ public class GetOptOut implements FREFunction {
         });
 
         synchronized (mutex) {
-             while (!mutex.containsKey("done") || mutex.get("done") != true) {
+             while (!mutex.containsKey("done") || !mutex.get("done")) {
                 try {
                     mutex.wait();
                 } catch (InterruptedException e) {

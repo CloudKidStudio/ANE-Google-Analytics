@@ -11,10 +11,7 @@
 package eu.alebianco.air.extensions.analytics.functions;
 
 import com.adobe.fre.*;
-import com.google.analytics.tracking.android.GoogleAnalytics;
-import com.google.analytics.tracking.android.ModelFields;
-import com.google.analytics.tracking.android.Tracker;
-import com.google.analytics.tracking.android.Transaction;
+import com.google.analytics.tracking.android.*;
 import com.stackoverflow.util.StackTraceInfo;
 import eu.alebianco.air.extensions.utils.FREUtils;
 import eu.alebianco.air.extensions.utils.LogLevel;
@@ -47,7 +44,7 @@ public class TrackData implements FREFunction {
             return FREUtils.createRuntimeException("ArgumentError", 0, "Unable to read the 'type' parameter on method '%s'.", FREUtils.stripPackageFromClassName(StackTraceInfo.getCurrentClassName()));
         }
 
-        Tracker tracker = (Tracker) GoogleAnalytics.getInstance(context.getActivity()).getTracker(trackingId);
+        Tracker tracker = GoogleAnalytics.getInstance(context.getActivity()).getTracker(trackingId);
 
         FREObject data = args[2];
 
@@ -122,7 +119,7 @@ public class TrackData implements FREFunction {
             value = null;
         }
 
-        Map hit = tracker.constructEvent(category, action, label, value);
+        Map<String, String> hit = tracker.constructEvent(category, action, label, value);
         tracker.send(ModelFields.EVENT, hit);
 
         return null;
@@ -151,7 +148,7 @@ public class TrackData implements FREFunction {
             description = null;
         }
 
-        Map hit = tracker.constructException(description, fatal);
+        Map<String, String> hit = tracker.constructException(description, fatal);
         tracker.send(ModelFields.EXCEPTION, hit);
 
         return null;
@@ -192,7 +189,7 @@ public class TrackData implements FREFunction {
             label = null;
         }
 
-        Map hit = tracker.constructTiming(category, interval, name, label);
+        Map<String, String> hit = tracker.constructTiming(category, interval, name, label);
         tracker.send(ModelFields.TIMING, hit);
 
         return null;
@@ -223,7 +220,7 @@ public class TrackData implements FREFunction {
             content = null;
         }
 
-        Map hit = tracker.constructSocial(network, action, content);
+        Map<String, String> hit = tracker.constructSocial(network, action, content);
         tracker.send(ModelFields.SOCIAL, hit);
 
         return null;
@@ -302,7 +299,7 @@ public class TrackData implements FREFunction {
             return FREUtils.createRuntimeException("ArgumentError", 0, "Unable to read a property on method '%s:%s'.", FREUtils.stripPackageFromClassName(StackTraceInfo.getCurrentClassName()), FREUtils.stripPackageFromClassName(StackTraceInfo.getCurrentMethodName()));
         }
 
-        tracker.trackTransaction(transaction);
+        tracker.sendTransaction(transaction);
 
         return null;
     }
