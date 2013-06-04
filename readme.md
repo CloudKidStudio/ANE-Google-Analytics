@@ -132,6 +132,8 @@ Use Adobe Air SDK 3.5 or later.
 
 ## Set up
 
+* Download the Android SDK Tool bundle, and use the Eclipse program provided with it to install the Android API version 7.
+* Ensure that your air installation within your FLexSDK folder is at least AIR 3.5
 * Download the [Google Analytics mobile SDKs](http://code.google.com/apis/analytics/docs/mobile/download.html) for both iOS and Android platforms.
     * From the iOS SDK, copy the files _GANTracker.h_ and _libGoogleAnalytics.a_ from the _Library_ folder within the .tar.gz archive, to the _source/ios/Libraries_ folder in the project.
 	* From the Android SDK, copy the file _libGoogleAnalytics.jar_ from inside the .zip archive, to the _source/android/libs_ folder in the project.

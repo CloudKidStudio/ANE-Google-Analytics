@@ -15,3 +15,5 @@ source/android/res
 
 source/android/javadocs
 source/ios/Documentation
+
+source/ios/.DS_Store

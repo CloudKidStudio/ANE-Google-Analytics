@@ -1,6 +1,8 @@
 <?xml version="1.0" ?>
 <project name="Air Native Extension Build Scripts" default="build" basedir="../">
-
+	
+	<property file="${user.home}\Documents\ant\my.build.properties"/>
+	
     <taskdef resource="net/sf/antcontrib/antcontrib.properties">
         <classpath>
             <pathelement location="./build/ant/lib/ant-contrib-1.0b3.jar"/>
