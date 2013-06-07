@@ -36,7 +36,6 @@ profile
 xcuserdata
 xcuserdata/**/*
 DerivedData/
-build/
 
 *.apk
 *.ap_
